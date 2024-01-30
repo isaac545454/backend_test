@@ -1,7 +1,8 @@
 import { UserSchemaType } from "../types/user"
+import { PRISMA_CLIENT } from "../PRISMA_CLIENT"
 
 export class UserService {
-  create({ email, password, username }: UserSchemaType): UserSchemaType {
-    return { email, password, username }
+  async create(user: UserSchemaType): Promise<UserSchemaType> {
+    return user
   }
 }

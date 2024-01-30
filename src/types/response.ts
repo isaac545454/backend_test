@@ -1,3 +1,14 @@
 import { Request } from "express"
 
-export type TypedRequest<T> = Request<{}, {}, T>
+interface TypedParamsDictionary {
+  [key: string]: string
+}
+
+export type TypedRequest<
+  TBody,
+  TParams = any,
+  Tquery = TypedParamsDictionary
+> = Request<{}, {}, TBody> & {
+  params: TParams
+  query: Tquery
+}
